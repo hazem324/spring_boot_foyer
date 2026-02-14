@@ -1,13 +1,12 @@
 package tn.esprit.tpfoyer.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -18,8 +17,11 @@ import java.util.Date;
 @NoArgsConstructor
 public class Reservation {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     String idReservation;
     Date anneeUniversitaire;
     boolean estValide;
+
+
+    @ManyToMany
+    Set<Etudiant> etudiants = new HashSet<Etudiant>();
 }

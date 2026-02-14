@@ -1,11 +1,11 @@
 package tn.esprit.tpfoyer.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -20,4 +20,10 @@ public class Foyer {
     long idFoyer;
     String nomFoyer;
     long capaciteFoyer;
+
+    @OneToOne(mappedBy = "foyer")
+    Universite universite;
+
+    @OneToMany(mappedBy = "foyer")
+    Set<Bloc> blocs = new HashSet<Bloc>();
 }
