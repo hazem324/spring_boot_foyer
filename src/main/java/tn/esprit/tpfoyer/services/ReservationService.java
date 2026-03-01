@@ -14,21 +14,21 @@ public class ReservationService implements IReservationService {
 
     @Override
     public Reservation addOrUpdateReservation(Reservation reservation) {
-        return null;
+        return reservationRepository.save(reservation);
     }
 
     @Override
     public void deleteReservation(String idReservation) {
-
+        reservationRepository.deleteById(idReservation);
     }
 
     @Override
     public List<Reservation> findAllReservations() {
-        return List.of();
+        return reservationRepository.findAll();
     }
 
     @Override
     public Reservation findReservation(String idReservation) {
-        return null;
+        return reservationRepository.findById(idReservation).orElse(null);
     }
 }

@@ -16,21 +16,21 @@ public class BlocService implements  IBlocService
 
     @Override
     public Bloc addOrUpdateBloc(Bloc bloc) {
-        return null;
+        return blocRepository.save(bloc);
     }
 
     @Override
     public void deleteBloc(long idBloc) {
-
+        blocRepository.deleteById(idBloc);
     }
 
     @Override
     public List<Bloc> findAllBlocs() {
-        return List.of();
+        return blocRepository.findAll();
     }
 
     @Override
     public Bloc findBloc(long idBloc) {
-        return null;
+        return blocRepository.findById(idBloc).orElse(null);
     }
 }

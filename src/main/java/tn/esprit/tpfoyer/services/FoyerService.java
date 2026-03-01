@@ -14,21 +14,21 @@ public class FoyerService implements IFoyerService{
 
     @Override
     public Foyer addOrUpdateFoyer(Foyer foyer) {
-        return null;
+        return foyerRepository.save(foyer);
     }
 
     @Override
     public void deleteFoyer(long idFoyer) {
-
+        foyerRepository.deleteById(idFoyer);
     }
 
     @Override
     public List<Foyer> findAllFoyers() {
-        return List.of();
+        return foyerRepository.findAll();
     }
 
     @Override
     public Foyer findFoyer(long idFoyer) {
-        return null;
+        return foyerRepository.findById(idFoyer).orElse(null);
     }
 }

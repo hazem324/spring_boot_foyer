@@ -14,21 +14,21 @@ public class EtudiantService implements  IEtudiantService {
 
     @Override
     public Etudiant addOrUpdateEtudiant(Etudiant etudiant) {
-        return null;
+        return etudiantRepository.save(etudiant);
     }
 
     @Override
     public void deleteEtudiant(long idEtudiant) {
-
+        etudiantRepository.deleteById(idEtudiant);
     }
 
     @Override
     public List<Etudiant> findAllEtudiants() {
-        return List.of();
+        return etudiantRepository.findAll();
     }
 
     @Override
     public Etudiant findEtudiant(long idEtudiant) {
-        return null;
+        return etudiantRepository.findById(idEtudiant).orElse(null);
     }
 }
