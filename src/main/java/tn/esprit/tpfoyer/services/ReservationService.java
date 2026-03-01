@@ -2,10 +2,33 @@ package tn.esprit.tpfoyer.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.tpfoyer.entities.Reservation;
 import tn.esprit.tpfoyer.repository.ReservationRepository;
+
+import java.util.List;
 
 @Service
 public class ReservationService implements IReservationService {
     @Autowired
     ReservationRepository reservationRepository;
+
+    @Override
+    public Reservation addOrUpdateReservation(Reservation reservation) {
+        return null;
+    }
+
+    @Override
+    public void deleteReservation(String idReservation) {
+
+    }
+
+    @Override
+    public List<Reservation> findAllReservations() {
+        return List.of();
+    }
+
+    @Override
+    public Reservation findReservation(String idReservation) {
+        return null;
+    }
 }
