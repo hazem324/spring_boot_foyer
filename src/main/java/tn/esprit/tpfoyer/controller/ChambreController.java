@@ -1,8 +1,10 @@
 package tn.esprit.tpfoyer.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.entities.Chambre;
+import tn.esprit.tpfoyer.entities.Reservation;
 import tn.esprit.tpfoyer.services.IChambreService;
 
 import java.util.List;
@@ -37,4 +39,38 @@ public class ChambreController {
     Chambre findChambre(@PathVariable long idChambre){
         return chambreService.findChambre(idChambre);
     }
+
+    @PostMapping("/add-with-reservation")
+    public ResponseEntity<Chambre> addChambreWithReservation(
+            @RequestBody ChambreReservationRequest req) {
+        return ResponseEntity.ok(
+                chambreService.addChambreAndReservation(req.getChambre(), req.getReservation()));
+    }
+
+
+    @PutMapping("/reserver/{idChambre}/reservation/{idReservation}")
+    public ResponseEntity<Chambre> reserverChambre(@PathVariable Long idChambre,
+                                                   @PathVariable String idReservation) {
+        return ResponseEntity.ok(chambreService.reserverChambre(idChambre, idReservation));
+    }
+
+
+    @PutMapping("/annuler/{idChambre}/reservation/{idReservation}")
+    public ResponseEntity<Chambre> annulerReservation(@PathVariable Long idChambre,
+                                                      @PathVariable String idReservation) {
+        return ResponseEntity.ok(chambreService.annulerReservation(idChambre, idReservation));
+    }
+    public static class ChambreReservationRequest {
+        private Chambre chambre;
+        private Reservation reservation;
+
+        public ChambreReservationRequest() {}
+
+        public Chambre getChambre()             { return chambre; }
+        public Reservation getReservation()     { return reservation; }
+        public void setChambre(Chambre c)       { this.chambre = c; }
+        public void setReservation(Reservation r) { this.reservation = r; }
+    }
+
 }
+

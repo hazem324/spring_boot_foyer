@@ -1,6 +1,7 @@
 package tn.esprit.tpfoyer.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.entities.Bloc;
 import tn.esprit.tpfoyer.services.IBlocService;
@@ -37,5 +38,24 @@ public class BlocController {
     @GetMapping("/findById/{idBloc}")
     Bloc findBloc(@PathVariable long idBloc){
         return blocService.findBloc(idBloc);
+    }
+
+    @PostMapping("/add-with-foyer/{idFoyer}")
+    public ResponseEntity<Bloc> addBlocWithFoyer(@RequestBody Bloc bloc,
+                                                 @PathVariable Long idFoyer) {
+        return ResponseEntity.ok(blocService.addBlocAndFoyer(bloc, idFoyer));
+    }
+
+
+    @PutMapping("/affecter/{idBloc}/foyer/{idFoyer}")
+    public ResponseEntity<Bloc> affecterBlocAFoyer(@PathVariable Long idBloc,
+                                                   @PathVariable Long idFoyer) {
+        return ResponseEntity.ok(blocService.affecterBlocAFoyer(idBloc, idFoyer));
+    }
+
+
+    @PutMapping("/desaffecter/{idBloc}")
+    public ResponseEntity<Bloc> desaffecterBlocDeFoyer(@PathVariable Long idBloc) {
+        return ResponseEntity.ok(blocService.desaffecterBlocDeFoyer(idBloc));
     }
 }

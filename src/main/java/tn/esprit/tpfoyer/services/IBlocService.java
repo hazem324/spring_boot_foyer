@@ -12,4 +12,8 @@ public interface IBlocService {
     List<Bloc> findAllBlocs();
 
     Bloc findBloc(long idBloc);
+
+    Bloc addBlocAndFoyer(Bloc bloc, Long idFoyer);
+    Bloc affecterBlocAFoyer(Long idBloc, Long idFoyer);
+    Bloc desaffecterBlocDeFoyer(Long idBloc);
 }
