@@ -16,4 +16,9 @@ public interface IBlocService {
     Bloc addBlocAndFoyer(Bloc bloc, Long idFoyer);
     Bloc affecterBlocAFoyer(Long idBloc, Long idFoyer);
     Bloc desaffecterBlocDeFoyer(Long idBloc);
+
+    List<Bloc> getBlocsSansFoyer();
+    List<Bloc> getBlocsByCapacite(Long capacite);
+    List<Bloc> getBlocsByPrefix(String prefix);
+    List<Bloc> getBlocsByNomAndCapacite(String nom, Long capacite);
 }

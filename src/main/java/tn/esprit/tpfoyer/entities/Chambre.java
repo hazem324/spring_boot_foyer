@@ -7,6 +7,8 @@ import lombok.experimental.FieldDefaults;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
@@ -22,6 +24,7 @@ public class Chambre {
     TypeChambre typeC;
 
     @ManyToOne
+    @JsonIgnore
     Bloc bloc;
 
     @OneToMany

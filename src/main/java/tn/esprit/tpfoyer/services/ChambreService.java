@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.entities.Chambre;
 import tn.esprit.tpfoyer.entities.Reservation;
+import tn.esprit.tpfoyer.entities.TypeChambre;
 import tn.esprit.tpfoyer.repository.ChambreRepository;
 import tn.esprit.tpfoyer.repository.ReservationRepository;
 
@@ -83,5 +84,15 @@ public class ChambreService implements IChambreService {
         reservation.setEstValide(false);
         reservationRepository.save(reservation);
         return chambreRepository.save(chambre);
+    }
+
+     @Override
+    public List<Chambre> getChambresByType(TypeChambre type) {
+        return chambreRepository.findByTypeC(type);
+    }
+
+    @Override
+    public Chambre getChambreByNumero(Long numero) {
+        return chambreRepository.findByNumeroChambre(numero);
     }
 }

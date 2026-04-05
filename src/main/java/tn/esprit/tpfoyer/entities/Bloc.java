@@ -7,6 +7,8 @@ import lombok.experimental.FieldDefaults;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
@@ -22,8 +24,10 @@ public class Bloc {
     long capaciteBloc;
 
     @ManyToOne
+    @JsonIgnore
     Foyer foyer;
 
     @OneToMany(mappedBy = "bloc")
+    @JsonIgnore
     Set<Chambre> chambres = new HashSet<Chambre>();
 }

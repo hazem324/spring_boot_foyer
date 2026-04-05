@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.entities.Chambre;
 import tn.esprit.tpfoyer.entities.Reservation;
+import tn.esprit.tpfoyer.entities.TypeChambre;
 import tn.esprit.tpfoyer.services.IChambreService;
 
 import java.util.List;
@@ -70,6 +71,16 @@ public class ChambreController {
         public Reservation getReservation()     { return reservation; }
         public void setChambre(Chambre c)       { this.chambre = c; }
         public void setReservation(Reservation r) { this.reservation = r; }
+    }
+
+     @GetMapping("/type/{type}")
+    public List<Chambre> getByType(@PathVariable TypeChambre type) {
+        return chambreService.getChambresByType(type);
+    }
+
+    @GetMapping("/numero/{numero}")
+    public Chambre getByNumero(@PathVariable Long numero) {
+        return chambreService.getChambreByNumero(numero);
     }
 
 }

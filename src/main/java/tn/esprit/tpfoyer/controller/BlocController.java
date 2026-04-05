@@ -58,4 +58,31 @@ public class BlocController {
     public ResponseEntity<Bloc> desaffecterBlocDeFoyer(@PathVariable Long idBloc) {
         return ResponseEntity.ok(blocService.desaffecterBlocDeFoyer(idBloc));
     }
+
+     //  Blocs sans foyer
+    @GetMapping("/blocs/sans-foyer")
+    public List<Bloc> getBlocsSansFoyer() {
+        return blocService.getBlocsSansFoyer();
+    }
+
+    //  Blocs capacité > X
+    @GetMapping("/blocs/capacite/{cap}")
+    public List<Bloc> getByCapacite(@PathVariable Long cap) {
+        return blocService.getBlocsByCapacite(cap);
+    }
+
+    // Blocs nom commence par A
+    @GetMapping("/blocs/prefix/{prefix}")
+    public List<Bloc> getByPrefix(@PathVariable String prefix) {
+        return blocService.getBlocsByPrefix(prefix);
+    }
+
+    //   Blocs nom + capacité
+    @GetMapping("/blocs/search")
+    public List<Bloc> getByNomAndCapacite(
+            @RequestParam String nom,
+            @RequestParam Long capacite) {
+
+        return blocService.getBlocsByNomAndCapacite(nom, capacite);
+    }
 }

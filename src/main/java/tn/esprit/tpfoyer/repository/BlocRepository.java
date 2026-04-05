@@ -13,5 +13,5 @@ public interface BlocRepository extends JpaRepository<Bloc, Long> {
 
     List<Bloc> findByNomBlocStartingWith(String prefix);
 
-    List<Bloc> findByNomBlocAndCapaciteBlocGreaterThan(String nomBloc, Long capacite);
+    List<Bloc> findByNomBlocStartingWithAndCapaciteBlocGreaterThan(String nomBloc, Long capacite);
 }

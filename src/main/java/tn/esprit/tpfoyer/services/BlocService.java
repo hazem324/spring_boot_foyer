@@ -67,4 +67,24 @@ public class BlocService implements  IBlocService
         bloc.setFoyer(null);
         return blocRepository.save(bloc);
     }
+
+    @Override
+    public List<Bloc> getBlocsSansFoyer() {
+        return blocRepository.findByFoyerIsNull();
+    }
+
+    @Override
+    public List<Bloc> getBlocsByCapacite(Long capacite) {
+        return blocRepository.findByCapaciteBlocGreaterThan(capacite);
+    }
+
+    @Override
+    public List<Bloc> getBlocsByPrefix(String prefix) {
+        return blocRepository.findByNomBlocStartingWith(prefix);
+    }
+
+    @Override
+    public List<Bloc> getBlocsByNomAndCapacite(String nom, Long capacite) {
+        return blocRepository.findByNomBlocStartingWithAndCapaciteBlocGreaterThan(nom, capacite);
+    }
 }
