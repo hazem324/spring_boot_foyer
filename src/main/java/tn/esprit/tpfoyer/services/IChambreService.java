@@ -20,4 +20,7 @@ public interface IChambreService {
 
     List<Chambre> getChambresByType(TypeChambre type);
     Chambre getChambreByNumero(Long numero);
+
+    Chambre findByNumero(long numero);
+    List<Chambre> findChambresByFoyer(String nomFoyer);
 }

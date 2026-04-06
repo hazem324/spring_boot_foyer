@@ -95,4 +95,15 @@ public class ChambreService implements IChambreService {
     public Chambre getChambreByNumero(Long numero) {
         return chambreRepository.findByNumeroChambre(numero);
     }
+
+    @Override
+    public Chambre findByNumero(long numero) {
+        return chambreRepository.findByNumero(numero);
+    }
+
+    @Override
+    public List<Chambre> findChambresByFoyer(String nomFoyer) {
+        
+        return chambreRepository.findChambresByFoyer(nomFoyer);
+    }
 }

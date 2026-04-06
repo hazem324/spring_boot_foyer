@@ -8,6 +8,7 @@ import tn.esprit.tpfoyer.services.IBlocService;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/bloc")
 @AllArgsConstructor
@@ -60,29 +61,36 @@ public class BlocController {
     }
 
      //  Blocs sans foyer
-    @GetMapping("/blocs/sans-foyer")
+    @GetMapping("/sans-foyer")
     public List<Bloc> getBlocsSansFoyer() {
         return blocService.getBlocsSansFoyer();
     }
 
     //  Blocs capacité > X
-    @GetMapping("/blocs/capacite/{cap}")
+    @GetMapping("/capacite/{cap}")
     public List<Bloc> getByCapacite(@PathVariable Long cap) {
         return blocService.getBlocsByCapacite(cap);
     }
 
     // Blocs nom commence par A
-    @GetMapping("/blocs/prefix/{prefix}")
+    @GetMapping("/prefix/{prefix}")
     public List<Bloc> getByPrefix(@PathVariable String prefix) {
         return blocService.getBlocsByPrefix(prefix);
     }
 
     //   Blocs nom + capacité
-    @GetMapping("/blocs/search")
+    @GetMapping("/search")
     public List<Bloc> getByNomAndCapacite(
             @RequestParam String nom,
             @RequestParam Long capacite) {
 
         return blocService.getBlocsByNomAndCapacite(nom, capacite);
     }
+
+    @GetMapping("/all")
+    public List<Bloc> getAllBlocs() {
+        return blocService.getAllBlocs();
+    }
+    
+
 }

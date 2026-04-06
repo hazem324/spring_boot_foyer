@@ -21,4 +21,5 @@ public interface IBlocService {
     List<Bloc> getBlocsByCapacite(Long capacite);
     List<Bloc> getBlocsByPrefix(String prefix);
     List<Bloc> getBlocsByNomAndCapacite(String nom, Long capacite);
+    List<Bloc> getAllBlocs();
 }

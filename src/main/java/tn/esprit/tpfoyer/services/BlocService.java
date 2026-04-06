@@ -87,4 +87,9 @@ public class BlocService implements  IBlocService
     public List<Bloc> getBlocsByNomAndCapacite(String nom, Long capacite) {
         return blocRepository.findByNomBlocStartingWithAndCapaciteBlocGreaterThan(nom, capacite);
     }
+
+    @Override
+    public List<Bloc> getAllBlocs() {
+        return blocRepository.getAllBlocs();
+    }
 }

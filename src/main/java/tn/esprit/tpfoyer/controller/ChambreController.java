@@ -83,5 +83,14 @@ public class ChambreController {
         return chambreService.getChambreByNumero(numero);
     }
 
+    @GetMapping("/findByNumero/{num}")
+    public Chambre findByNumero(@PathVariable("num") long numero) {
+        return chambreService.findByNumero(numero);
+    }
+
+    @GetMapping("/findByFoyer/{nom}")
+    public List<Chambre> findChambresByFoyer(@PathVariable("nom") String nomFoyer) {
+        return chambreService.findChambresByFoyer(nomFoyer);
+    }
 }
 
