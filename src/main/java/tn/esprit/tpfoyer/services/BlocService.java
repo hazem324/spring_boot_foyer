@@ -1,6 +1,7 @@
 package tn.esprit.tpfoyer.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.entities.Bloc;
 import tn.esprit.tpfoyer.entities.Foyer;
@@ -24,12 +25,15 @@ public class BlocService implements  IBlocService
         return blocRepository.save(bloc);
     }
 
+
     @Override
     public void deleteBloc(long idBloc) {
         blocRepository.deleteById(idBloc);
     }
 
     @Override
+    //  Toutes les 15s (8h-12h, Lun-Ven)
+    @Scheduled(cron = "*/15 * 8-12 * * MON-FRI", zone = "Africa/Tunis")
     public List<Bloc> findAllBlocs() {
         return blocRepository.findAll();
     }

@@ -1,6 +1,7 @@
 package tn.esprit.tpfoyer.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.entities.Chambre;
 import tn.esprit.tpfoyer.entities.Reservation;
@@ -30,6 +31,8 @@ public class ChambreService implements IChambreService {
     }
 
     @Override
+    // Toutes les 10 min (Mar + Ven)
+    @Scheduled(cron = "0 */10 9-17 * * TUE,FRI", zone = "Africa/Tunis")
     public List<Chambre> findAllChambres() {
         return chambreRepository.findAll();
     }
@@ -107,3 +110,4 @@ public class ChambreService implements IChambreService {
         return chambreRepository.findChambresByFoyer(nomFoyer);
     }
 }
+
